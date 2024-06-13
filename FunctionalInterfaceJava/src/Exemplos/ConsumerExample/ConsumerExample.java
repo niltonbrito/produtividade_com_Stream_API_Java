@@ -1,0 +1,35 @@
+package Exemplos.ConsumerExample;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+
+/**
+ * Representa uma operação que aceita um argumento do tipo T <T> ou qualquer
+ * tipo <Integer> e não retorna nenhum resultado. É utilizada principalmente
+ * para realizar ações, ou efeitos colaterais nos elementos do Stream dem
+ * modificar, ou retornar um valor.
+ */
+
+public class ConsumerExample {
+
+	public static void main(String[] args) {
+		// Criar uma lista de números inteiros
+		List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5);
+
+		// Usar o Consumer com expressão lambda para imprimir números pares
+		Consumer<Integer> imprimirNumerosPares = numero -> {
+			if (numero % 2 == 0) {
+				System.out.println(numero);
+			}
+		};
+
+		// Usar o Consumer para imprimir números pares no Stream
+		// Exemplo 1
+		numeros.stream().forEach(imprimirNumerosPares);
+
+		// Usar o Consumer para imprimir números pares no Stream
+		// Exemplo 2
+		numeros.stream().filter(n -> n % 2 == 0).forEach(System.out::println);
+	}
+}
